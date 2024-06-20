@@ -54,8 +54,12 @@
 }
 
 .dark-theme{
-    --white-color: #252525;
+    --white-color: #ECE9F7;
+    --black-color: #B6C7D6;
     --background-color: #133c55;
+    --border-color: #D9DDE4;
+    --text-color: #B6C7D6;
+    transition: 0.3s ease-in-out;
 }
 
 body{
@@ -111,6 +115,7 @@ header .container .logo .menu i{
     font-size: 1.2rem;
     width: 340px;
     padding-left: 1rem;
+    background: none;
 }
 
 .container .search i{
@@ -175,7 +180,9 @@ header .container .logo .menu i{
     border-radius: 40px 8px 8px 40px;
     cursor: pointer;
     position: relative;
+    border: 2px solid var(--border-color);
 }
+
 .person .overflow-log-out{
     padding: 0.75rem 1.5rem;
     background-color: var(--white-color);

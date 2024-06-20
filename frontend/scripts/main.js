@@ -101,8 +101,13 @@ container.addEventListener('click', () => {
 });
 
 // ===========DARK THEME MODE===========
-const modebtn = document.querySelector('.menu');
+const modebtn = document.querySelector('.mode');
 const body = document.querySelector('body');
 modebtn.addEventListener('click', () => {
   body.classList.toggle("dark-theme");
+  if(body.classList.contains('dark-theme')){
+    modebtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+  }else{
+    modebtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+  }
 });
