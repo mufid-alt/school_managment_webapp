@@ -10,7 +10,7 @@
     .main-container .greet h1{
         font-size: 2rem;
     }
-    .main-container .buttons button{
+    .main-container .buttons a{
         padding: 1.2rem 1.5rem;
         font-size: 1.4rem;
     }
@@ -98,7 +98,7 @@
    .main-container .greet h1{
     font-size: 1.8rem;
    }
-   .main-container .buttons button{
+   .main-container .buttons a{
         padding: 1rem 1.4rem;
         font-size: 1.2rem;
    }

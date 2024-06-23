@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management</title>
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/new-staff.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+</head>
+<body>
+    <header class="container">
+        <div class="logo">
+            <div class="menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <a href="#">
+                <img src="./img/logo.png" alt="Logo">
+            </a>
+        </div>
+
+        <div class="search">
+            <div>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" placeholder="Search....">
+            </div>
+        </div>
+
+        <div class="admin">
+            <div class="icons">
+                <div class="message">
+                    <div class="dot"></div>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="notify">
+                    <div class="dot"></div>
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+            </div>
+            <div class="person">
+                <img src="./img/admin.png" alt="Administrator">
+                <h3>
+                    Hemant Zuceed<br>
+                    <span>School Administrator</span>
+                </h3>
+                <div class="overflow-log-out">
+                    <a href="#">Log Out</a>
+                </div>
+            </div>
+            <div class="mode"><i class="fa-solid fa-moon"></i></div>
+        </div>
+    </header>
+
+    <nav class="sidebar">
+        <ul>
+            <li class="nav-links">
+                <a href="#">
+                    <i class="fa-sharp fa-solid fa-table-cells-large"></i>
+                    <span class="nav-items">Dashboard</span>
+                </a>
+                <span class="tooltip">Dashboard</span>
+            </li>
+            <li class="nav-links">
+                <a href="#">
+                    <i class="fa-solid fa-person-chalkboard"></i>
+                    <span class="nav-items">Teahcers</span>
+                </a>
+                <span class="tooltip">Teahcers</span>
+            </li>
+            <li class="nav-links">
+                <a href="#">
+                    <i class="fa-solid fa-user-graduate"></i>
+                    <span class="nav-items">Students</span>
+                </a>
+                <span class="tooltip">Students</span>
+            </li>
+            <li class="nav-links">
+                <a href="#">
+                    <i class="fa-regular fa-calendar-check"></i>
+                    <span class="nav-items">
+                        Events
+                    </span>
+                </a>
+                <span class="tooltip">Events</span>
+            </li>
+            <li class="nav-links">
+                <a href="#">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span class="nav-items">Calender</span>
+                </a>
+                <span class="tooltip">Calender</span>
+            </li>
+            <li class="nav-links">
+                <a href="#">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span class="nav-items">Chart</span>
+                </a>
+                <span class="tooltip">Chart</span>
+            </li>
+            <li class="nav-links">
+                <a href="#">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span class="nav-items">Finance</span>
+                </a>
+                <span class="tooltip">Finance</span>
+            </li>
+            <li class="nav-links">
+                <a href="#">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span class="nav-items">Notifications</span>
+                </a>
+                <span class="tooltip">Notifications</span>
+            </li>
+            <li class="nav-links">
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    <span class="nav-items">Setting</span>
+                </a>
+                <span class="tooltip">Setting</span>
+            </li>
+            <li class="nav-links nav-img">
+                <img src="./img/nav-img.png" alt="Navbar Image">
+            </li>
+        </ul>
+    </nav>
+
+    <main class="main">
+        <section class="form-container">
+            <header>Hire New Teachers</header>
+            <form action="#" class="form">
+              <div class="input-box">
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter full name" required />
+              </div>
+              <div class="input-box">
+                <label>Email Address</label>
+                <input type="text" placeholder="Enter  email address" required />
+              </div>
+              <div class="input-box">
+                <label>Set Password</label>
+                <input type="password" placeholder="Enter password" required />
+              </div>
+              <div class="column">
+                <div class="input-box">
+                  <label>Phone Number</label>
+                  <input type="number" placeholder="Enter phone number" required />
+                </div>
+                <div class="input-box">
+                  <label>Birth Date</label>
+                  <input type="date" placeholder="Enter birth date" required />
+                </div>
+              </div>
+              <div class="gender-box">
+                <h3>Gender</h3>
+                <div class="gender-option">
+                  <div class="gender">
+                    <input type="radio" id="check-male" name="gender" checked />
+                    <label for="check-male">Male</label>
+                  </div>
+                  <div class="gender">
+                    <input type="radio" id="check-female" name="gender" />
+                    <label for="check-female">Female</label>
+                  </div>
+                  <div class="gender">
+                    <input type="radio" id="check-other" name="gender" />
+                    <label for="check-other">Prefer not to say</label>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="input-box">
+                  <label>Graduation Qualification</label>
+                  <div class="select-box">
+                    <select>
+                      <option hidden>Graduation Qualification</option>
+                      <option>B.A</option>
+                      <option>B.Com</option>
+                      <option>B.Sc</option>
+                      <option>BCA</option>
+                      <option>B-Tech</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="input-box">
+                  <label>Post Graduation Qualification</label>
+                  <div class="select-box">
+                    <select>
+                      <option hidden>Graduation Qualification</option>
+                      <option>M.A</option>
+                      <option>M.Com</option>
+                      <option>M.Sc</option>
+                      <option>MCA</option>
+                      <option>M-Tech</option>
+                      <option>None</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="gender-box">
+                <h3>What technologies are you comfortable with ?</h3>
+                <div class="gender-option">
+                  <div class="gender">
+                    <input type="checkbox" id="web" name="gender" />
+                    <label for="web">Web Design</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="dbms" name="gender" />
+                    <label for="dbms">DBMS</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="python" name="gender" />
+                    <label for="python">Python</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="c++" name="gender" />
+                    <label for="c++">C++</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="java" name="gender" />
+                    <label for="java">Java</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="php" name="gender" />
+                    <label for="php">PHP</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="iot" name="gender" />
+                    <label for="iot">IOT</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="ssad" name="gender" />
+                    <label for="ssad">SSAD</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="linux" name="gender" />
+                    <label for="linux">Linux</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="net" name="gender" />
+                    <label for="net">Dot Net</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="graphic" name="gender" />
+                    <label for="graphic">Graphic Design</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="ad-java" name="gender" />
+                    <label for="ad-java">Advance Java</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="tally" name="gender" />
+                    <label for="tally">Tally ERP</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="excel" name="gender" />
+                    <label for="excel">Advance Excel</label>
+                  </div>
+                </div>
+              </div>
+              <div class="input-box address">
+                <label>Address</label>
+                <input type="text" placeholder="Enter street address" required />
+                <input type="text" placeholder="Enter street address line 2" required />
+                <div class="column">
+                  <div class="select-box">
+                    <select>
+                      <option hidden>Country</option>
+                      <option>America</option>
+                      <option>Japan</option>
+                      <option>India</option>
+                      <option>Nepal</option>
+                    </select>
+                  </div>
+                  <input type="text" placeholder="Enter your city" required />
+                </div>
+                <div class="column">
+                  <input type="text" placeholder="Enter your region" required />
+                  <input type="number" placeholder="Enter postal code" required />
+                </div>
+              </div>
+              <button type="submit">Hire Teacher</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-icons">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-x-twitter"></i>
+                <i class="fa-brands fa-linkedin"></i>
+                <i class="fa-brands fa-threads"></i>
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <hr>
+            <div class="contents">
+                <p>&copy; 2024 Developed & Managed by<span>Hemant Zuceed</span></p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // ============POP UP LOGOUT
+        let admin_div = document.querySelector('.person');
+        admin_div.addEventListener('click', () => {
+            admin_div.classList.toggle('active');
+        });
+
+        // ==============SIDEBAR 
+        let menu = document.querySelector('.fa-bars');
+        let sidebar = document.querySelector('.sidebar');
+        menu.addEventListener("click", () => {
+            sidebar.classList.toggle("active");
+        });
+
+        // ===========DARK THEME MODE===========
+        const modebtn = document.querySelector('.mode');
+        modebtn.addEventListener('click', () => {
+            document.body.classList.toggle("dark-theme");
+            if(document.body.classList.contains('dark-theme')){
+                modebtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            }else{
+                modebtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+            }
+        });
+    </script>
+    <script src="./scripts/font.js"></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 // ==============SIDEBAR 
-const menu = document.querySelector('.fa-bars');
-const sidebar = document.querySelector('.sidebar');
+let menu = document.querySelector('.fa-bars');
+let sidebar = document.querySelector('.sidebar');
 
 menu.addEventListener("click", () => {
     sidebar.classList.toggle("active");
@@ -94,7 +94,7 @@ function activeFeatured(){
 linkFeatured.forEach(l=> l.addEventListener('click', activeFeatured));
 
 // =============LOG OUT BUTTON POP UP============
-const container = document.querySelector('.person');
+let container = document.querySelector('.person');
 
 container.addEventListener('click', () => {
   container.classList.toggle('active');

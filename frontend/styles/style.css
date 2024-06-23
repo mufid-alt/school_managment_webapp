@@ -378,8 +378,9 @@ header.container .logo .menu i{
     justify-content: space-between;
 }
 
-.buttons .left button,
-.buttons .right button{
+.buttons .left a,
+.buttons .right a{
+    text-decoration: none;
     border: none;
     outline: none;
     border-radius: 8px;
@@ -393,21 +394,21 @@ header.container .logo .menu i{
     transition: all 0.3s;
 }
 
-button i{
+a i{
     margin-right: 1rem;
 }
 
-.buttons .right button{
+.buttons .right a{
     background-color: var(--main-color);
     color: var(--white-color);
 }
 
-.buttons .right button:hover{
+.buttons .right a:hover{
     background-color: var(--white-color);
     color: var(--main-color);
 }
 
-.buttons .left button:hover{
+.buttons .left a:hover{
     background-color: var(--main-color);
     color: var(--white-color);
 }
@@ -683,7 +684,6 @@ h3 span{
     width: 100%;
     height: 100%;
     overflow: hidden;
-    border: 1px solid;
 }
 
 .finance.attendance{
@@ -996,7 +996,7 @@ button.active-btn{
     width: 100%;
     height: 80%;
     display: grid;
-    grid-template-rows: repeat(6, 65px);
+    grid-template-rows: repeat(10, 65px);
 }
 
 .table-row{
@@ -1077,7 +1077,7 @@ hr{
 }
 
 .contents p span{
-    color: var(--main-color);
+    color: var(--orange-color);
     font-weight: 500;
     cursor: pointer;
 }
