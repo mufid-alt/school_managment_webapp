@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School Management</title>
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
     <script type="text/javascript" src="./scripts/googleCharts.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart', 'bar']});
@@ -341,8 +343,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="bar-graph">
-                        <div id="chart_div" style="height: 300px;width: 100%;font-size: 0.80rem;"></div>
+                    <div id="bar-graph">
+                        <div id="chart_div" style="height: 300px!important;width: 100%!important;font-size: 0.80rem;"></div>
                     </div>
                 </div>
     
@@ -358,8 +360,8 @@
                             <div class="outer-box"><div class="inner-box"></div></div>
                         </div>
                     </div>
-                    <div class="bar-graph">
-                        <div id="curve_chart" style="width: 800px; height: 100%;"></div>
+                    <div id="bar-graph">
+                        <div id="curve_chart" style="width: 100%!important; height: 100%!important;"></div>
                     </div>
                 </div>
             </section>
@@ -379,14 +381,7 @@
                     </header>
                     <div class="custom-calendar">
                         <section>
-                            <div class="holiday"></div>
-                            <div class="red-dot-1"></div>
-                            <div class="red-dot-2"></div>
-                            <div class="red-dot-3"></div>
-                            <div class="red-dot-4"></div>
-                            <div class="red-dot-5"></div>
-                            <div class="red-dot-6"></div>
-                            <div class="red-dot-7"></div>
+                            <div id="holiday"></div>
                             <ul class="days">
                                 <li>Sun</li>
                                 <li>Mon</li>

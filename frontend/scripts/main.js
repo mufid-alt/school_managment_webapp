@@ -102,12 +102,77 @@ container.addEventListener('click', () => {
 
 // ===========DARK THEME MODE===========
 const modebtn = document.querySelector('.mode');
-const body = document.querySelector('body');
 modebtn.addEventListener('click', () => {
-  body.classList.toggle("dark-theme");
-  if(body.classList.contains('dark-theme')){
+  document.body.classList.toggle("dark-theme");
+  if(document.body.classList.contains('dark-theme')){
     modebtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
   }else{
     modebtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
   }
 });
+
+// Function to apply styles when viewport hits 1024px or below
+function applyOnBigScreens() {
+  const mediaQuery = window.matchMedia('(max-width: 1024px)');
+  
+  function handleViewportChange(e) {
+    if (e.matches) {
+      sidebar.classList.add("active");
+      menu.style.pointerEvents = "none";
+    } else {
+      sidebar.classList.remove('active');
+      menu.style.pointerEvents = "all";
+    }
+  }
+
+  // Initial check
+  handleViewportChange(mediaQuery);
+
+  // Add listener to respond to viewport changes
+  mediaQuery.addEventListener('change', handleViewportChange);
+}
+applyOnBigScreens();
+
+// Function to apply styles when viewport hits 640px
+function applyOnMediumScreens() {
+  const mediaQuery = window.matchMedia('(min-width: 640px)');
+  
+  function handleViewportChange(e) {
+    if (e.matches) {
+      sidebar.classList.add("active");
+      menu.style.pointerEvents = "all";
+    } else {
+      sidebar.classList.remove('active');
+      menu.style.pointerEvents = "none";
+    }
+  }
+
+  // Initial check
+  handleViewportChange(mediaQuery);
+
+  // Add listener to respond to viewport changes
+  mediaQuery.addEventListener('change', handleViewportChange);
+}
+applyOnMediumScreens();
+
+// Function to apply styles when viewport hits 476px or below
+function applyOnSmallScreens() {
+  const mediaQuery = window.matchMedia('(min-width: 476px)');
+  
+  function handleViewportChange(e) {
+    if (e.matches) {
+      sidebar.classList.add("active");
+      menu.style.pointerEvents = "all";
+    } else {
+      sidebar.classList.remove('active');
+      menu.style.pointerEvents = "none";
+    }
+  }
+
+  // Initial check
+  handleViewportChange(mediaQuery);
+
+  // Add listener to respond to viewport changes
+  mediaQuery.addEventListener('change', handleViewportChange);
+}
+applyOnSmallScreens();

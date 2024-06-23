@@ -1,0 +1,428 @@
+/* ==========MEDIA QUERY========== */
+/* XL DEVICES */
+@media (max-width: 1280px) {
+    .container .search{
+        width: 450px;
+    }
+    .container .admin{
+      width: 525px;
+    }
+    .main-container .greet h1{
+        font-size: 2rem;
+    }
+    .main-container .buttons button{
+        padding: 1.2rem 1.5rem;
+        font-size: 1.4rem;
+    }
+    .card-items{
+        width: 240px;
+    }
+    .circle-container{
+        width: 35%;
+    }
+    .circle-container .outer{
+        width: 80px;
+        height: 80px;
+    }
+    .circle-container .inner{
+        width: 70px;
+        height: 70px;
+    }
+    .stats .income{
+        width: 13vw;
+        padding: 0.40rem;
+    }
+    .income .left .outer-circle{
+        width: 60px;
+        height: 60px;
+    }
+    .income .left .inner-circle{
+        width: 50px;
+        height: 50px;
+    }
+    .income .right h3{
+        font-size: 0.80rem;
+    }
+    .income .right p{
+        font-size: 0.70rem;
+    }
+    .calendar header{
+        font-size: 0.90rem;
+    }
+    .sort-buttons button{
+        padding: 0.50rem 0.80rem;
+    }
+    .card-slide{
+        width: 170px;
+    }
+    .card-slide h4{
+        font-size: 0.70rem;
+    }
+    .table-row{
+        grid-template-columns: 80px 200px 120px 120px 300px 80px;
+    }
+    .footer{
+        bottom: -220vh;
+    }
+}
+
+/* L DEVICES */
+@media (max-width: 1024px) {
+   .container .search{
+    width: 300px;
+   }
+   .container .search input{
+    width: 200px;
+   }
+   .container .admin{
+    width: 450px;
+   }
+   .admin .person{
+    width: 270px;
+   }
+   .person h3{
+    letter-spacing: normal;
+   }
+   .person h3 span{
+    font-size: 0.80rem;
+   }
+   .admin .mode{
+    margin-right: 0;
+   }
+   .sidebar{
+    height: 106vh;
+   }
+   .sidebar.active ~ .main{
+    left: 80px;
+   }
+   .main-container .greet h1{
+    font-size: 1.8rem;
+   }
+   .main-container .buttons button{
+        padding: 1rem 1.4rem;
+        font-size: 1.2rem;
+   }
+   .card-items{
+        width: 220px;
+    }
+    .circle-container{
+        width: 35%;
+    }
+    .circle-container .outer{
+        width: 80px;
+        height: 80px;
+    }
+    .circle-container .inner{
+        width: 70px;
+        height: 70px;
+    }
+    .content h2{
+        font-size: 1rem;
+    }
+    .chart-container .finance{
+        padding: 0 1rem;
+        overflow: hidden;
+    }
+    .stats .income{
+        width: 16vw;
+    }
+    .event-container .calendar{
+        padding: 1rem;
+    }
+    .calendar header{
+        font-size: 0.80rem;
+    }
+    .calendar header span{
+        font-size: 0.70rem;
+    }
+    .custom-calendar #holiday{
+        width: 45px;
+    }
+    .event-container .event{
+        padding: 1rem;
+    }
+    .sort-buttons button{
+        padding: 0.70rem;
+    }
+    .card-slide{
+        width: 165px;
+    }
+    .table-row{
+        grid-template-columns: 50px 200px 150px 100px 250px 80px;
+    }
+    .footer-icons{
+        width: 40%;
+    }
+}
+
+/* M DEVICES */
+@media (max-width: 768px) {
+    header.container{
+        padding: 0rem 1rem;
+    }
+    header .menu{
+        display: none;
+    }
+    .container .search{
+        padding-left: 10px;
+        width: 150px;
+    }
+    .container .search input{
+        width: 80px;
+        padding: 0;
+    }
+    .container .admin{
+        width: 420px;
+    }
+    .main{
+        height: 340vh;
+    }
+    .data-container {
+        flex-direction: column!important;
+    }
+    .main-container{
+        flex-direction: column;
+    }
+    .main-container .greet,
+    .main-container .buttons{
+        padding: 0.75rem 1rem;
+        height: 100px;
+    }
+    .card-container{
+        height: 270px;
+        padding: 0 2rem;
+    }
+    .card-container .cards{
+        height: 100%;
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(2, 300px);
+        padding: 0 4rem;
+    }
+    .chart-container{
+        width: 95%;
+    }
+    .chart-container .finance{
+        padding: 0 1.5rem;
+    }
+    .finance .heading{
+        font-size: 1.5rem;
+    }
+    .stats .income{
+        width: 25vw;
+    }
+    .income .left .outer-circle{
+        width: 70px;
+        height: 70px;
+    }
+    .income .outer-circle .inner-circle{
+        width: 55px;
+        height: 55px;
+    }
+    .income .right h3{
+        font-size: 1rem;
+    }
+    .stats .income:nth-child(3){
+        width: 18vw;
+    }
+    .event-container{
+        width: 100%;
+        height: 480px;
+        display: flex;
+        flex-direction: row;
+        margin-top: -2rem;
+        justify-content: space-between;
+    }
+    .event-container .calendar{
+        width: 48%;
+        height: 100%;
+    }
+    .event-container .event{
+        width: 50%;
+        height: 100%;
+    }
+    .cards-wrapper{
+        height: 78%;
+        gap: 0.55rem;
+        margin-top: 1.5rem;
+    }
+    .card-slide{
+        width: 155px;
+    }
+    .card-slide h4 span,
+    .card-slide h5 span,
+    .card-slide h6 span{
+        font-size: 0.70rem;
+    }
+    .reg-users .user-container{
+        overflow-x: scroll;
+    }
+    .table-row{
+        grid-template-columns: 50px 200px 100px 100px 200px 80px;
+    }
+    .footer{
+        top: calc(340vh + 20%);
+    }
+    .footer-icons{
+        width: 50%;
+    }
+}
+
+/* S DEVICES */
+@media (max-width: 640px) {
+    header .menu{
+        display: block;
+    }
+    .container .search{
+        display: none;
+    }
+    .container .admin{
+        width: 600px;
+    }
+    .sidebar{
+        z-index: 20;
+    }
+    .sidebar.active{
+        display: none;
+    }
+    .main{
+        left: 0;
+        width: 100%;
+    }
+    .sidebar.active ~ .main{
+        left: 0;
+        width: 100%;
+    }
+    .main .main-container{
+        padding: 0.75em 1rem;
+    }
+    .card-container .cards{
+        padding-left: 1.2rem;
+    }
+    .chart-container{
+        padding: 0;
+    }
+    .finance .stats .income{
+        width: 29vw;
+    }
+    .calendar header{
+        font-size: 0.70rem;
+    }
+    .calendar header span{
+        font-size: 0.60rem;
+    }
+    .buttons span{
+        font-size: 0.70rem;
+        margin: 0 0.50rem;
+    }
+    .custom-calendar #holiday{
+        width: 35px;
+    }
+    .event .navbar-heading{
+        font-size: 1.1rem;
+    }
+    .sort-buttons button{
+        padding: 0.5rem;
+    }
+    .cards-wrapper{
+        margin-top: 1rem;
+    }
+    .card-slide{
+        width: 135px;
+        padding: 0.50rem;
+        height: 200px;
+    }
+    .card-slide h1,
+    .card-slide h4,
+    .card-slide h5,
+    .card-slide h6{
+        font-size: 0.65rem;
+        margin-bottom: 5px;
+    }
+    .footer-icons{
+        width: 60%;
+        font-size: 1.5rem;
+    }
+    .contents p{
+        font-size: 0.90rem;
+    }
+}
+
+/* XS DEVICES */
+@media (max-width: 476px) {
+    .container .admin .icons{
+        display: none;
+    }
+    .admin .person{
+        width: 250px;
+    }
+    .main{
+        height: 410vh;
+    }
+    .main-container .greet{
+        width: 100%;
+    }
+    .main-container .buttons{
+        justify-content: space-evenly;
+    }
+    .card-container{
+        padding: 0;
+    }
+    .card-container .cards{
+        padding: 0 0.50rem;
+        grid-template-columns: repeat(2, 230px);
+    }
+    .stats .income{
+        min-width: 190px;
+    }
+    .finance .stats .income:last-child{
+        display: none;
+    }
+    .data-container .event-container{
+        flex-direction: column;
+        height: 980px;
+    }
+    .event-container .calendar{
+        width: 100%;
+        height: 50%;
+    }
+    .calendar header{
+        font-size: 1rem;
+    }
+    .calendar header span{
+        font-size: 0.80rem;
+    }
+    .calendar #holiday{
+        width: 60px;
+    }
+    .event-container .event{
+        width: 100%;
+        height: 50%;
+    }
+    .event .navbar-heading{
+        font-size: 1.2rem;
+    }
+    .sort-buttons button{
+        font-size: 0.75rem;
+        padding: 0.55rem 1rem;
+    }
+    .card-slide{
+        width: 200px;
+        padding: 1rem 1.3rem;
+        height: 180px;
+    }
+    .footer{
+        top: calc(410vh + 20%);
+    }
+    .footer-icons{
+        font-size: 1.2rem;
+        width: 80%;
+    }
+    .footer-container .contents p{
+        font-size: 0.75rem;
+    }
+    .footer-container .contents p span{
+        font-size: 0.80rem;
+        color: var(--white-color);
+    }
+}
