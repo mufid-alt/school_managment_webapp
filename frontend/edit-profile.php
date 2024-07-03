@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php $file_name  = basename($_SERVER["PHP_SELF"]);echo strtoupper(pathinfo($file_name,PATHINFO_FILENAME));?></title>
+    <title>School Management</title>
     <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/responsive.css">
@@ -16,7 +16,9 @@
     <link rel="stylesheet" href="./styles/events.css">
 </head>
 <body>
-    <?php include("../backend/setting-backend.php");?>
+    <!-- ======Success message pop up==== -->
+    <div class="success"></div>
+
     <header class="container">
         <div class="logo">
             <div class="menu">
@@ -46,14 +48,7 @@
                 </div>
             </div>
             <div class="person">
-                <?php
-                    $image = $_SESSION["user_image"];
-                    if($image == NULL){
-                        echo "<img src='./img/admin.png' style='width:75px;height:75px;border-radius:50%;object-fit:cover;'>";
-                    }else{
-                        echo '<img src="./img/'.$image.'" style="width:75px;height:75px;border-radius:50%;object-fit:cover;">';
-                    }
-                ?>
+                <img src="./img/admin.png" alt="Administrator">
                 <h3>
                     <?php
                         if(isset($_SESSION["db_username"])){
@@ -139,9 +134,10 @@
     </nav>
 
     <main class="main">
+        <?php include("../backend/setting-backend.php");?>
         <section class="form-container">
-            <header>Edit Profile</header>
-            <form action="#" class="form">
+            <header>Update Profile</header>
+            <form action="./edit-profile.php" method="post" enctype="multipart/form-data" class="form">
               <div class="input-box profile-pic">
                 <div class="profile-dp">
                     <?php
@@ -152,21 +148,22 @@
                             echo '<img src="./img/'.$image.'" style="width:100px;height:100px;border-radius:50%;object-fit:cover;">';
                         }
                     ?>
+                    <input type="file" name="image">
                 </div>
               </div>
               <div class="input-box">
-                <label>Your Name</label>
-                <input type="text" value="<?php echo $_SESSION["username"];?>" disabled/>
+                <label>Full Name</label>
+                <input type="text" name="username" placeholder="<?php echo $_SESSION["username"];?>"/>
               </div>
               <div class="input-box">
-                <label>Your Email Address</label>
+                <label>Email Address</label>
                 <input type="text" value="<?php echo $_SESSION["user_email"];?>" disabled/>
               </div>
               <div class="input-box">
-                <label>Your Password</label>
-                <input type="text" value="<?php echo $_SESSION["user_pass"];?>" disabled/>
+                <label>Set Password</label>
+                <input type="text" name="user_pass" placeholder="<?php echo $_SESSION["user_pass"];?>"/>
               </div>
-              <a href="./edit-profile.php" id="form-btn">Edit Profile</a>
+              <button type="submit">Update Profile</button>
             </form>
         </section>
     </main>
@@ -193,3 +190,5 @@
     <script src="./scripts/font.js"></script>
 </body>
 </html>
+
+<?php include("../backend/edit-profile-backend.php");?>

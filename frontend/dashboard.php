@@ -546,7 +546,7 @@
             </div>
             <hr>
             <div class="contents">
-                <p>&copy; 2024 Developed & Managed by<span>Hemant Zuceed</span></p>
+                <p>&copy; <?php echo date("Y",time());?> Developed & Managed by<span>Hemant Zuceed</span></p>
             </div>
         </div>
     </footer>

@@ -12,6 +12,26 @@
     cursor: pointer;
 }
 
+form #form-btn{
+    text-decoration: none;
+    display: block;
+    height: 55px;
+    text-align: center;
+    line-height: 55px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: rgb(130, 106, 251);
+}
+
+#form button:hover {
+    background: rgb(88, 56, 250);
+}
+
 .profile-dp input{
     width: 350px;
     border: none;
@@ -31,4 +51,4 @@
     border: 2px solid green;
     z-index: 999;
     opacity: 0;
-  }
+}

@@ -8,11 +8,12 @@
 }
 
 .main{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 170vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 170vh;
 }
+
 .form-container {
   max-width: 700px;
   width: 100%;
