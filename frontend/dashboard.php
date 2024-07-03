@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    include("../backend/connection.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,11 +87,17 @@
             <div class="person">
                 <img src="./img/admin.png" alt="Administrator">
                 <h3>
-                    Hemant Zuceed<br>
+                    <?php
+                        if(isset($_SESSION["db_username"])){
+                            echo $_SESSION["db_username"];
+                        }
+                    ?><br>
                     <span>School Administrator</span>
                 </h3>
                 <div class="overflow-log-out">
-                    <a href="#">Log Out</a>
+                    <form action="../backend/log-out.php" method="post">
+                        <button type="submit" name="log-out">Log Out</button>
+                    </form>
                 </div>
             </div>
             <div class="mode"><i class="fa-solid fa-moon"></i></div>
@@ -118,7 +128,7 @@
                 <span class="tooltip">Students</span>
             </li>
             <li class="nav-links">
-                <a href="#">
+                <a href="./events.html">
                     <i class="fa-regular fa-calendar-check"></i>
                     <span class="nav-items">
                         Events
@@ -127,35 +137,35 @@
                 <span class="tooltip">Events</span>
             </li>
             <li class="nav-links">
-                <a href="#">
+                <a href="./calendar.html">
                     <i class="fa-solid fa-calendar-days"></i>
                     <span class="nav-items">Calender</span>
                 </a>
                 <span class="tooltip">Calender</span>
             </li>
             <li class="nav-links">
-                <a href="#">
+                <a href="./chart.html">
                     <i class="fa-solid fa-chart-simple"></i>
                     <span class="nav-items">Chart</span>
                 </a>
                 <span class="tooltip">Chart</span>
             </li>
             <li class="nav-links">
-                <a href="#">
+                <a href="./finance.html">
                     <i class="fa-solid fa-chart-line"></i>
                     <span class="nav-items">Finance</span>
                 </a>
                 <span class="tooltip">Finance</span>
             </li>
             <li class="nav-links">
-                <a href="#">
+                <a href="./notification.html">
                     <i class="fa-solid fa-circle-exclamation"></i>
                     <span class="nav-items">Notifications</span>
                 </a>
                 <span class="tooltip">Notifications</span>
             </li>
             <li class="nav-links">
-                <a href="#">
+                <a href="./setting.html">
                     <i class="fa-solid fa-gear"></i>
                     <span class="nav-items">Setting</span>
                 </a>
@@ -170,18 +180,24 @@
     <main class="main">
         <div class="main-container">
             <div class="greet">
-                <h1>Good Morning, Hemant</h1>
+                <h1>Good Morning, 
+                    <?php
+                        // Split the full name to get the first name
+                        $first_name = explode(" ", $_SESSION["db_username"])[0];
+                        echo $first_name;
+                    ?>
+                </h1>
                 <span>How are you feeling today ?</span>
             </div>
             <div class="buttons">
                 <div class="left">
-                    <a href="./new-staff.html">
+                    <a href="./new-staff.php">
                         <i class="fa-solid fa-people-group"></i>
                         Add Staff
                     </a>
                 </div>
                 <div class="right">
-                    <a href="./new-admission.html">
+                    <a href="./new-admission.php">
                         <i class="fa-solid fa-user-check"></i>
                         New Admission
                     </a>

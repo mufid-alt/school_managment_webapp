@@ -1,9 +1,14 @@
+<?php
+    session_start();
+    include("../backend/connection.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="./styles/index.css">
     
         <!-- ===== BOX ICONS ===== -->
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
@@ -11,10 +16,13 @@
         <title>Login</title>
     </head>
     <body>
+        <!-- Div to show error message -->
+        <div class="error"></div>
+
         <div class="login">
             <div class="login__content">
                 <div class="login__img">
-                    <img src="assets/img/img-login.svg" alt="Login SVG">
+                    <img src="./img/img-login.svg" alt="Login SVG">
                 </div>
 
                 <div class="login__forms">
@@ -33,7 +41,7 @@
 
                         <a href="#" class="login__forgot">Forgot password?</a>
 
-                        <a href="#" class="login__button">Sign In</a>
+                        <button type="submit" class="login__button">Sign In</button>
 
                         <div>
                             <span class="login__account">Administrator Log In ?</span>
@@ -41,20 +49,20 @@
                         </div>
                     </form>
 
-                    <form action="#" class="login__create none" id="login-up">
+                    <form action="./index.php" method="post" class="login__create none" id="login-up">
                         <h1 class="login__title">Admin Sign In</h1>
     
                         <div class="login__box">
                             <i class='bx bx-at login__icon'></i>
-                            <input type="text" placeholder="Email" class="login__input">
+                            <input type="text" placeholder="Email" class="login__input" name="admin-email">
                         </div>
 
                         <div class="login__box">
                             <i class='bx bx-lock-alt login__icon'></i>
-                            <input type="password" placeholder="Password" class="login__input">
+                            <input type="password" placeholder="Password" class="login__input" name="admin-pass">
                         </div>
 
-                        <a href="#" class="login__button">Sign In</a>
+                        <button type="submit" class="login__button" name="admin-login">Sign In</button>
 
                         <div>
                             <span class="login__account">User Sign In ?</span>
@@ -72,6 +80,8 @@
         </div>
 
         <!--===== MAIN JS =====-->
-        <script src="assets/js/main.js"></script>
+        <script src="./scripts/index.js"></script>
     </body>
 </html>
+
+<?php include("../backend/login.php");?>

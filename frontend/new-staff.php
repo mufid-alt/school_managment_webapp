@@ -1,3 +1,7 @@
+<?php
+  session_start();
+  include("../backend/connection.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +10,14 @@
     <title>School Management</title>
     <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/new-admission.css">
+    <link rel="stylesheet" href="./styles/new-staff.css">
     <link rel="stylesheet" href="./styles/responsive.css">
 </head>
 <body>
-    <header class="container">
+  <!-- ======Success message pop up==== -->
+  <div class="success"></div>
+
+  <header class="container">
         <div class="logo">
             <div class="menu">
                 <i class="fa-solid fa-bars"></i>
@@ -41,18 +48,24 @@
             <div class="person">
                 <img src="./img/admin.png" alt="Administrator">
                 <h3>
-                    Hemant Zuceed<br>
-                    <span>School Administrator</span>
+                  <?php
+                    if(isset($_SESSION["db_username"])){
+                    echo $_SESSION["db_username"];
+                  }
+                  ?><br>
+                  <span>School Administrator</span>
                 </h3>
                 <div class="overflow-log-out">
-                    <a href="#">Log Out</a>
+                  <form action="../backend/log-out.php" method="post">
+                    <button type="submit" name="log-out">Log Out</button>
+                  </form>
                 </div>
             </div>
             <div class="mode"><i class="fa-solid fa-moon"></i></div>
         </div>
-    </header>
+  </header>
 
-    <nav class="sidebar">
+  <nav class="sidebar">
         <ul>
             <li class="nav-links">
                 <a href="#">
@@ -123,117 +136,168 @@
                 <img src="./img/nav-img.png" alt="Navbar Image">
             </li>
         </ul>
-    </nav>
+  </nav>
 
-    <main class="main">
+  <main class="main">
         <section class="form-container">
-            <header>New Admission</header>
-            <form action="#" class="form">
+            <header>Hire New Teachers</header>
+            <form action="./new-staff.php" method="post" class="form">
               <div class="input-box">
                 <label>Full Name</label>
-                <input type="text" placeholder="Enter full name" required />
+                <input type="text" placeholder="Enter full name" name="name" required />
               </div>
               <div class="input-box">
                 <label>Email Address</label>
-                <input type="text" placeholder="Enter  email address" required />
+                <input type="text" placeholder="Enter  email address" name="email" required />
               </div>
               <div class="input-box">
                 <label>Set Password</label>
-                <input type="password" placeholder="Enter  password" required />
+                <input type="password" placeholder="Enter password" name="pass" required />
               </div>
               <div class="column">
                 <div class="input-box">
                   <label>Phone Number</label>
-                  <input type="number" placeholder="Enter phone number" required />
+                  <input type="number" placeholder="Enter phone number" name="phone" required />
                 </div>
                 <div class="input-box">
                   <label>Birth Date</label>
-                  <input type="date" placeholder="Enter birth date" required />
+                  <input type="date" name="dob" />
                 </div>
               </div>
               <div class="gender-box">
                 <h3>Gender</h3>
                 <div class="gender-option">
                   <div class="gender">
-                    <input type="radio" id="check-male" name="gender" checked />
+                    <input type="radio" id="check-male" name="gender" value="Male" />
                     <label for="check-male">Male</label>
                   </div>
                   <div class="gender">
-                    <input type="radio" id="check-female" name="gender" />
+                    <input type="radio" id="check-female" name="gender" value="Female" />
                     <label for="check-female">Female</label>
                   </div>
                   <div class="gender">
-                    <input type="radio" id="check-other" name="gender" />
+                    <input type="radio" id="check-other" name="gender" value="Others" />
                     <label for="check-other">Prefer not to say</label>
                   </div>
                 </div>
               </div>
               <div class="column">
                 <div class="input-box">
-                  <label>Senior Secondary Qualification</label>
+                  <label>Graduation Qualification</label>
                   <div class="select-box">
-                    <select>
-                      <option hidden>Senior Secondary</option>
-                      <option>10th</option>
-                      <option>12th</option>
+                    <select name="qual-1">
+                      <option hidden>Graduation Qualification</option>
+                      <option value="B.A">B.A</option>
+                      <option value="B.Com">B.Com</option>
+                      <option value="B.Sc">B.Sc</option>
+                      <option value="BCA">BCA</option>
+                      <option value="B-Tech">B-Tech</option>
                     </select>
                   </div>
                 </div>
                 <div class="input-box">
-                  <label>Graduation Qualification</label>
+                  <label>Post Graduation Qualification</label>
                   <div class="select-box">
-                    <select>
+                    <select name="qual-2">
                       <option hidden>Graduation Qualification</option>
-                      <option>B.A</option>
-                      <option>B.Com</option>
-                      <option>B.Sc</option>
-                      <option>BCA</option>
-                      <option>B-Tech</option>
-                      <option>None</option>
+                      <option value="M.A">M.A</option>
+                      <option value="M.Com">M.Com</option>
+                      <option value="M.Sc">M.Sc</option>
+                      <option value="MCA">MCA</option>
+                      <option value="M-Tech">M-Tech</option>
+                      <option value="None">None</option>
                     </select>
                   </div>
                 </div>
               </div>
-              <div class="input-box">
-                <label>Which Programme would you like to take</label>
-                <div class="select-box">
-                    <select>
-                      <option hidden>Which one you like</option>
-                      <option>MDCE -3 Years</option>
-                      <option>ADCE -2.5 Years</option>
-                      <option>ADEA -2 Years</option>
-                      <option>Graphic Designing -1.5 Year</option>
-                      <option>Web Devlopement -1 Year</option>
-                    </select>
+              <div class="gender-box">
+                <h3>What technologies are you comfortable with ?</h3>
+                <div class="gender-option">
+                  <div class="gender">
+                    <input type="checkbox" id="web" name="subjects[]" value="Web Design"/>
+                    <label for="web">Web Design</label>
                   </div>
+                  <div class="gender">
+                    <input type="checkbox" id="dbms" name="subjects[]" value="DBMS"/>
+                    <label for="dbms">DBMS</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="python" name="subjects[]" value="Python"/>
+                    <label for="python">Python</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="c++" name="subjects[]" value="C++"/>
+                    <label for="c++">C++</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="java" name="subjects[]" value="Java"/>
+                    <label for="java">Java</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="php" name="subjects[]" value="PHP"/>
+                    <label for="php">PHP</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="iot" name="subjects[]" value="IOT"/>
+                    <label for="iot">IOT</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="ssad" name="subjects[]" value="SSAD"/>
+                    <label for="ssad">SSAD</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="linux" name="subjects[]" value="Linux"/>
+                    <label for="linux">Linux</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="net" name="subjects[]" value="Dot Net"/>
+                    <label for="net">Dot Net</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="graphic" name="subjects[]" value="Graphic Design"/>
+                    <label for="graphic">Graphic Design</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="ad-java" name="subjects[]" value="Advance Java"/>
+                    <label for="ad-java">Advance Java</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="tally" name="subjects[]" value="Tally ERP"/>
+                    <label for="tally">Tally ERP</label>
+                  </div>
+                  <div class="gender">
+                    <input type="checkbox" id="excel" name="subjects[]" value="Advance Excel"/>
+                    <label for="excel">Advance Excel</label>
+                  </div>
+                </div>
               </div>
               <div class="input-box address">
                 <label>Address</label>
-                <input type="text" placeholder="Enter street address" required />
-                <input type="text" placeholder="Enter street address line 2" required />
+                <input type="text" placeholder="Enter street address" name="add-1" required />
+                <input type="text" placeholder="Enter street address line 2" name="add-2" required />
                 <div class="column">
                   <div class="select-box">
-                    <select>
+                    <select name="country">
                       <option hidden>Country</option>
-                      <option>America</option>
-                      <option>Japan</option>
-                      <option>India</option>
-                      <option>Nepal</option>
+                      <option value="America">America</option>
+                      <option value="Japan">Japan</option>
+                      <option value="India">India</option>
+                      <option value="Nepal">Nepal</option>
                     </select>
                   </div>
-                  <input type="text" placeholder="Enter your city" required />
+                  <input type="text" placeholder="Enter your city" name="city" required />
                 </div>
                 <div class="column">
-                  <input type="text" placeholder="Enter your region" required />
-                  <input type="number" placeholder="Enter postal code" required />
+                  <input type="text" placeholder="Enter your region" name="region" required />
+                  <input type="number" placeholder="Enter postal code" name="pincode" required />
                 </div>
               </div>
-              <button type="submit">Submit Admission</button>
+              <button type="submit">Hire Teacher</button>
             </form>
         </section>
-    </main>
+  </main>
 
-    <footer class="footer">
+  <footer class="footer">
         <div class="footer-container">
             <div class="footer-icons">
                 <i class="fa-brands fa-facebook-f"></i>
@@ -249,32 +313,11 @@
                 <p>&copy; 2024 Developed & Managed by<span>Hemant Zuceed</span></p>
             </div>
         </div>
-    </footer>
-    <script>
-        // ============POP UP LOGOUT
-        let admin_div = document.querySelector('.person');
-        admin_div.addEventListener('click', () => {
-            admin_div.classList.toggle('active');
-        });
-
-        // ==============SIDEBAR 
-        let menu = document.querySelector('.fa-bars');
-        let sidebar = document.querySelector('.sidebar');
-        menu.addEventListener("click", () => {
-            sidebar.classList.toggle("active");
-        });
-
-        // ===========DARK THEME MODE===========
-        const modebtn = document.querySelector('.mode');
-        modebtn.addEventListener('click', () => {
-            document.body.classList.toggle("dark-theme");
-            if(document.body.classList.contains('dark-theme')){
-                modebtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-            }else{
-                modebtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-            }
-        });
-    </script>
-    <script src="./scripts/font.js"></script>
+  </footer>
+  
+  <script src="./scripts/new-staff.js"></script>
+  <script src="./scripts/font.js"></script>
 </body>
 </html>
+
+<?php include("../backend/new-staff-backend.php")?>

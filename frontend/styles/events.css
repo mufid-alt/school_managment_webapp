@@ -1,0 +1,18 @@
+.data-container .event-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.main{
+    height: 110vh;
+}
+
+.event-container .event,
+.event-container .calendar{
+    width: 48%;
+}
+
+.footer{
+    top: calc(20% + 141vh);
+}

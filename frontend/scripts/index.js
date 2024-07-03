@@ -24,3 +24,9 @@ signIn.addEventListener('click', ()=>{
     loginIn.classList.toggle('block')
     loginUp.classList.toggle('none')
 });
+
+// =============ERROR POPUP=======
+const error_div = document.querySelector('.error');
+setTimeout(() => {
+    error_div.style.display = "none";
+}, 3000);

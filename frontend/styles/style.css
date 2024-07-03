@@ -199,9 +199,14 @@ header.container .logo .menu i{
     transition: 0.2s ease;
 }
 
-.overflow-log-out a{
-    text-decoration: none;
-    color: var(--text-color);
+.overflow-log-out button{
+    border: none;
+    outline: none;
+    padding: 0.55rem 0.85rem;
+    color: var(--white-color);
+    background-color: var(--main-color);
+    border-radius: 0.75rem;
+    cursor: pointer;
 }
 .person.active .overflow-log-out{
     opacity: 1;

@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include("../backend/connection.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,11 +46,17 @@
             <div class="person">
                 <img src="./img/admin.png" alt="Administrator">
                 <h3>
-                    Hemant Zuceed<br>
+                    <?php
+                        if(isset($_SESSION["db_username"])){
+                            echo $_SESSION["db_username"];
+                        }
+                    ?><br>
                     <span>School Administrator</span>
                 </h3>
                 <div class="overflow-log-out">
-                    <a href="#">Log Out</a>
+                    <form action="../backend/log-out.php" method="post">
+                        <button type="submit" name="log-out">Log Out</button>
+                    </form>
                 </div>
             </div>
             <div class="mode"><i class="fa-solid fa-moon"></i></div>
@@ -128,7 +139,13 @@
     <main class="main">
         <div class="main-container">
             <div class="greet">
-                <h1>Good Morning, Hemant</h1>
+                <h1>Good Morning, 
+                    <?php
+                        // Split the full name to get the first name
+                        $first_name = explode(" ", $_SESSION["db_username"])[0];
+                        echo $first_name;
+                    ?>
+                </h1>
                 <span>How are you feeling today ?</span>
             </div>
             <div class="buttons">
@@ -159,86 +176,7 @@
                         <div class="table-col">Email</div>
                         <div class="table-col">Action</div>
                     </div>
-                    <div class="table-row">
-                        <div class="table-col">1101</div>
-                        <div class="table-col">Hemant Zuceed</div>
-                        <div class="table-col">Teacher</div>
-                        <div class="table-col">Male</div>
-                        <div class="table-col">hemant@gmail.com</div>
-                        <div class="table-col"><i class="fa-regular fa-eye"></i></div>
-                    </div>
-                    <div class="table-row">
-                        <div class="table-col">1102</div>
-                        <div class="table-col">Kuldeep Sharma</div>
-                        <div class="table-col">Teacher</div>
-                        <div class="table-col">Male</div>
-                        <div class="table-col">kuldeep@gmail.com</div>
-                        <div class="table-col"><i class="fa-regular fa-eye"></i></div>
-                    </div>
-                    <div class="table-row">
-                        <div class="table-col">1103</div>
-                        <div class="table-col">Yash Rana</div>
-                        <div class="table-col">Teacher</div>
-                        <div class="table-col">Male</div>
-                        <div class="table-col">yashrana@gmail.com</div>
-                        <div class="table-col"><i class="fa-regular fa-eye"></i></div>
-                    </div>
-                    <div class="table-row">
-                        <div class="table-col">1104</div>
-                        <div class="table-col">Mufidul Singh</div>
-                        <div class="table-col">Teacher</div>
-                        <div class="table-col">Male</div>
-                        <div class="table-col">mufid@gmail.com</div>
-                        <div class="table-col"><i class="fa-regular fa-eye"></i></div>
-                    </div>
-                    <div class="table-row">
-                        <div class="table-col">1105</div>
-                        <div class="table-col">Bheesham Sharma</div>
-                        <div class="table-col">Teacher</div>
-                        <div class="table-col">Male</div>
-                        <div class="table-col">bheesham@gmail.com</div>
-                        <div class="table-col"><i class="fa-regular fa-eye"></i></div>
-                    </div>
-                    <div class="table-row">
-                        <div class="table-col">1106</div>
-                        <div class="table-col">Bheesham Sharma</div>
-                        <div class="table-col">Teacher</div>
-                        <div class="table-col">Male</div>
-                        <div class="table-col">bheesham@gmail.com</div>
-                        <div class="table-col"><i class="fa-regular fa-eye"></i></div>
-                    </div>
-                    <div class="table-row">
-                        <div class="table-col">1107</div>
-                        <div class="table-col">Bheesham Sharma</div>
-                        <div class="table-col">Teacher</div>
-                        <div class="table-col">Male</div>
-                        <div class="table-col">bheesham@gmail.com</div>
-                        <div class="table-col"><i class="fa-regular fa-eye"></i></div>
-                    </div>
-                    <div class="table-row">
-                        <div class="table-col">1108</div>
-                        <div class="table-col">Bheesham Sharma</div>
-                        <div class="table-col">Teacher</div>
-                        <div class="table-col">Male</div>
-                        <div class="table-col">bheesham@gmail.com</div>
-                        <div class="table-col"><i class="fa-regular fa-eye"></i></div>
-                    </div>
-                    <div class="table-row">
-                        <div class="table-col">1109</div>
-                        <div class="table-col">Bheesham Sharma</div>
-                        <div class="table-col">Teacher</div>
-                        <div class="table-col">Male</div>
-                        <div class="table-col">bheesham@gmail.com</div>
-                        <div class="table-col"><i class="fa-regular fa-eye"></i></div>
-                    </div>
-                    <div class="table-row">
-                        <div class="table-col">1110</div>
-                        <div class="table-col">Bheesham Sharma</div>
-                        <div class="table-col">Teacher</div>
-                        <div class="table-col">Male</div>
-                        <div class="table-col">bheesham@gmail.com</div>
-                        <div class="table-col"><i class="fa-regular fa-eye"></i></div>
-                    </div>
+                    <?php include("../backend/view-teacher-backend.php");?>
                 </div>
             </div>
         </article>
@@ -262,30 +200,7 @@
         </div>
     </footer>
 
-    <script>
-        // ============POP UP LOGOUT
-        let admin_div = document.querySelector('.person');
-        admin_div.addEventListener('click', () => {
-            admin_div.classList.toggle('active');
-        });
-
-        // ==============SIDEBAR 
-        let menu = document.querySelector('.fa-bars');
-        let sidebar = document.querySelector('.sidebar');
-        menu.addEventListener("click", () => {
-            sidebar.classList.toggle("active");
-        });
-        // ===========DARK THEME MODE===========
-        const modebtn = document.querySelector('.mode');
-        modebtn.addEventListener('click', () => {
-            document.body.classList.toggle("dark-theme");
-            if(document.body.classList.contains('dark-theme')){
-                modebtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-            }else{
-                modebtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-            }
-        });
-    </script>
+    <script src="./scripts/view-teacher.js"></script>
     <script src="./scripts/font.js"></script>
 </body>
 </html>
