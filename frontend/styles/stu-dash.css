@@ -27,11 +27,7 @@ header {
     padding: 0.55rem 4rem;
 }
 
-.log-out{
-    display: flex;
-    align-items: center;
-}
-.log-out button {
+header button {
     background-color: var(--main-color);
     color: var(--white-color);
     font-size: 1.2rem;
@@ -44,7 +40,7 @@ header {
     margin-right: 1rem;
 }
 
-.log-out button:hover{
+header button:hover{
     background-color: rgba(0, 0, 0, 1);
 }
 section.personal{

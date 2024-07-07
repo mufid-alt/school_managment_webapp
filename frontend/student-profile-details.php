@@ -1,7 +1,15 @@
 <?php
-  session_start();
-  include("../backend/connection.php");
+    session_start();
+    include("../backend/connection.php");
+
+    //checks if admin logged in else redirects to login page
+    if (!isset($_SESSION['admin_logged_in'])) {
+        // Redirect the user to the login page
+        header('Location: ./index.php');
+        exit();
+    }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

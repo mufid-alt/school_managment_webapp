@@ -1,6 +1,13 @@
 <?php
-  session_start();
-  include("../backend/connection.php");
+    session_start();
+    include("../backend/connection.php");
+
+    //checks if admin logged in else redirects to login page
+    if (!isset($_SESSION['admin_logged_in'])) {
+        // Redirect the user to the login page
+        header('Location: ./index.php');
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -210,11 +217,11 @@
                 <div class="select-box">
                     <select name="course">
                       <option hidden>Which one you like</option>
-                      <option value="MDCE">MDCE -3 Years</option>
-                      <option value="ADCE">ADCE -2.5 Years</option>
-                      <option value="ADEA">ADEA -2 Years</option>
-                      <option value="Graphic Design">Graphic Designing -1.5 Year</option>
-                      <option value="Web Design">Web Design -1 Year</option>
+                      <option value="MDCE 3 YEARS">MDCE -3 Years</option>
+                      <option value="ADCE 2.5 YEARS">ADCE -2.5 Years</option>
+                      <option value="ADEA 2 YEARS">ADEA -2 Years</option>
+                      <option value="Graphic Design 1.5 YEARS">Graphic Designing -1.5 Year</option>
+                      <option value="Web Design 1 YEAR">Web Design -1 Year</option>
                     </select>
                   </div>
               </div>

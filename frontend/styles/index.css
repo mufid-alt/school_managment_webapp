@@ -148,6 +148,18 @@ img{
   color: var(--first-color-light);
 }
 
+.staff__login{
+  margin-top: 1rem;
+  width: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.staff__login input{
+  margin-top: 0.55rem;
+}
+
 .login__button{
   width: 100%;
   padding: 1rem;
@@ -159,6 +171,7 @@ img{
   font-weight: 600;
   border-radius: .5rem;
   transition: .3s;
+  cursor: pointer;
 }
 
 .login__button:hover{

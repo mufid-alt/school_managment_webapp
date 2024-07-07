@@ -31,17 +31,19 @@
     
                         <div class="login__box">
                             <i class='bx bx-at login__icon'></i>
-                            <input type="email" placeholder="Email" class="login__input">
+                            <input type="email" placeholder="Email" class="login__input" name="user-email">
                         </div>
     
                         <div class="login__box">
                             <i class='bx bx-lock-alt login__icon'></i>
-                            <input type="password" placeholder="Password" class="login__input">
+                            <input type="password" placeholder="Password" class="login__input" name="user-password">
                         </div>
 
-                        <a href="#" class="login__forgot">Forgot password?</a>
+                        <div class="staff__login">
+                            <input type="checkbox" name="teacher-login" id="staff-login"><label class="login__forgot" for="staff-login">Staff Login ?</label>
+                        </div>
 
-                        <button type="submit" class="login__button">Sign In</button>
+                        <button type="submit" class="login__button" name="user-login">Sign In</button>
 
                         <div>
                             <span class="login__account">Administrator Log In ?</span>

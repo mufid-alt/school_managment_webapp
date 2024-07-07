@@ -1,1 +1,0 @@
-SELECT * FROM new_staff WHERE ID = 1;
