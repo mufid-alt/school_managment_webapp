@@ -2,12 +2,13 @@
     session_start();
     include("../backend/connection.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Management</title>
+    <title><?php $file_name  = basename($_SERVER["PHP_SELF"]);echo strtoupper(pathinfo($file_name,PATHINFO_FILENAME));?></title>
     <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/responsive.css">
@@ -86,7 +87,14 @@
                 </div>
             </div>
             <div class="person">
-                <img src="./img/admin.png" alt="Administrator">
+                <?php
+                    $image = $_SESSION["user_image"];
+                    if($image == NULL){
+                        echo "<img src='./img/admin.png' style='width:69px;height:69px;border-radius:50%;object-fit:cover;'>";
+                    }else{
+                        echo '<img src="./img/'.$image.'" style="width:69px;height:69px;border-radius:50%;object-fit:cover;">';
+                    }
+                ?>
                 <h3>
                     <?php
                         if(isset($_SESSION["db_username"])){
@@ -108,28 +116,28 @@
     <nav class="sidebar">
         <ul>
             <li class="nav-links">
-                <a href="./index.html">
+                <a href="./dashboard.php">
                     <i class="fa-sharp fa-solid fa-table-cells-large"></i>
                     <span class="nav-items">Dashboard</span>
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
             <li class="nav-links">
-                <a href="./view-teacher.html">
+                <a href="./view-teacher.php">
                     <i class="fa-solid fa-person-chalkboard"></i>
                     <span class="nav-items">Teahcers</span>
                 </a>
                 <span class="tooltip">Teahcers</span>
             </li>
             <li class="nav-links">
-                <a href="./view-student.html">
+                <a href="./view-student.php">
                     <i class="fa-solid fa-user-graduate"></i>
                     <span class="nav-items">Students</span>
                 </a>
                 <span class="tooltip">Students</span>
             </li>
             <li class="nav-links">
-                <a href="./events.html">
+                <a href="./events.php">
                     <i class="fa-regular fa-calendar-check"></i>
                     <span class="nav-items">
                         Events
@@ -138,28 +146,28 @@
                 <span class="tooltip">Events</span>
             </li>
             <li class="nav-links">
-                <a href="./calendar.html">
+                <a href="./calendar.php">
                     <i class="fa-solid fa-calendar-days"></i>
                     <span class="nav-items">Calender</span>
                 </a>
                 <span class="tooltip">Calender</span>
             </li>
             <li class="nav-links">
-                <a href="./chart.html">
+                <a href="./charts.php">
                     <i class="fa-solid fa-chart-simple"></i>
                     <span class="nav-items">Chart</span>
                 </a>
                 <span class="tooltip">Chart</span>
             </li>
             <li class="nav-links">
-                <a href="./finance.html">
+                <a href="./finance.php">
                     <i class="fa-solid fa-chart-line"></i>
                     <span class="nav-items">Finance</span>
                 </a>
                 <span class="tooltip">Finance</span>
             </li>
             <li class="nav-links">
-                <a href="./setting.html">
+                <a href="./setting.php">
                     <i class="fa-solid fa-gear"></i>
                     <span class="nav-items">Setting</span>
                 </a>
@@ -201,50 +209,22 @@
 
         <article class="data-container">
             <section class="chart-container">
-                <div class="finance">
-                    <div class="heading">School Finance</div>
-                    <div class="stats">
-                        <div class="income">
-                            <div class="left">
-                                <div class="outer-circle">
-                                    <div class="inner-circle">
-                                        <i class="fa-solid fa-chart-line"></i>
-                                    </div>
-                                    <div class="circle-income"></div>
-                                </div>
-                            </div>
-                            <div class="right">
-                                <h3><span>&#8377;</span>7,20,925.00</h3>
-                                <p>Total Income</p>
-                            </div>
+                <div class="finance attendance">
+                    <div class="heading">School Attendance</div>
+                    <div class="buttons">
+                        <div class="students">
+                            Students
+                            <div class="outer-box"><div class="inner-box"></div></div>
                         </div>
-    
-                        <div class="income">
-                            <div class="left">
-                                <div class="outer-circle">
-                                    <div class="inner-circle">
-                                        <i class="fa-solid fa-chart-line"></i>
-                                    </div>
-                                    <div class="circle-income"></div>
-                                </div>
-                            </div>
-                            <div class="right">
-                                <h3><span>&#8377;</span>2,78,393.58</h3>
-                                <p>Total Expenses</p>
-                            </div>
-                        </div>
-    
-                        <div class="income">
-                            <div class="right">
-                                <h3>59 Projects</h3>
-                                <p>As @ 16th July 2024</p>
-                            </div>
+                        <div class="teachers">
+                            Teachers
+                            <div class="outer-box"><div class="inner-box"></div></div>
                         </div>
                     </div>
                     <div id="bar-graph">
-                        <div id="chart_div" style="height: 300px!important;width: 100%!important;font-size: 0.80rem;"></div>
+                        <div id="curve_chart" style="width: 100%!important; height: 100%!important;"></div>
                     </div>
-                </div> 
+                </div>
             </section>
         </article>
     </main>
@@ -262,7 +242,7 @@
             </div>
             <hr>
             <div class="contents">
-                <p>&copy; 2024 Developed & Managed by<span>Hemant Zuceed</span></p>
+                <p>&copy; <?php echo date("Y",time());?> Developed & Managed by<span>Hemant Zuceed</span></p>
             </div>
         </div>
     </footer>

@@ -2,12 +2,13 @@
     session_start();
     include("../backend/connection.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Management</title>
+    <title><?php $file_name  = basename($_SERVER["PHP_SELF"]);echo strtoupper(pathinfo($file_name,PATHINFO_FILENAME));?></title>
     <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/responsive.css">
@@ -16,9 +17,6 @@
     <link rel="stylesheet" href="./styles/events.css">
 </head>
 <body>
-    <!-- ======Success message pop up==== -->
-    <div class="success"></div>
-
     <header class="container">
         <div class="logo">
             <div class="menu">
@@ -48,7 +46,14 @@
                 </div>
             </div>
             <div class="person">
-                <img src="./img/admin.png" alt="Administrator">
+                <?php
+                    $image = $_SESSION["user_image"];
+                    if($image == NULL){
+                        echo "<img src='./img/admin.png' style='width:69px;height:69px;border-radius:50%;object-fit:cover;'>";
+                    }else{
+                        echo '<img src="./img/'.$image.'" style="width:69px;height:69px;border-radius:50%;object-fit:cover;">';
+                    }
+                ?>
                 <h3>
                     <?php
                         if(isset($_SESSION["db_username"])){
@@ -70,28 +75,28 @@
     <nav class="sidebar">
         <ul>
             <li class="nav-links">
-                <a href="./index.html">
+                <a href="./dashboard.php">
                     <i class="fa-sharp fa-solid fa-table-cells-large"></i>
                     <span class="nav-items">Dashboard</span>
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
             <li class="nav-links">
-                <a href="./view-teacher.html">
+                <a href="./view-teacher.php">
                     <i class="fa-solid fa-person-chalkboard"></i>
                     <span class="nav-items">Teahcers</span>
                 </a>
                 <span class="tooltip">Teahcers</span>
             </li>
             <li class="nav-links">
-                <a href="./view-student.html">
+                <a href="./view-student.php">
                     <i class="fa-solid fa-user-graduate"></i>
                     <span class="nav-items">Students</span>
                 </a>
                 <span class="tooltip">Students</span>
             </li>
             <li class="nav-links">
-                <a href="./events.html">
+                <a href="./events.php">
                     <i class="fa-regular fa-calendar-check"></i>
                     <span class="nav-items">
                         Events
@@ -100,28 +105,28 @@
                 <span class="tooltip">Events</span>
             </li>
             <li class="nav-links">
-                <a href="./calendar.html">
+                <a href="./calendar.php">
                     <i class="fa-solid fa-calendar-days"></i>
                     <span class="nav-items">Calender</span>
                 </a>
                 <span class="tooltip">Calender</span>
             </li>
             <li class="nav-links">
-                <a href="./chart.html">
+                <a href="./charts.php">
                     <i class="fa-solid fa-chart-simple"></i>
                     <span class="nav-items">Chart</span>
                 </a>
                 <span class="tooltip">Chart</span>
             </li>
             <li class="nav-links">
-                <a href="./finance.html">
+                <a href="./finance.php">
                     <i class="fa-solid fa-chart-line"></i>
                     <span class="nav-items">Finance</span>
                 </a>
                 <span class="tooltip">Finance</span>
             </li>
             <li class="nav-links">
-                <a href="./setting.html">
+                <a href="./setting.php">
                     <i class="fa-solid fa-gear"></i>
                     <span class="nav-items">Setting</span>
                 </a>
@@ -152,7 +157,7 @@
                 </div>
               </div>
               <div class="input-box">
-                <label>Full Name</label>
+                <label>Change Name</label>
                 <input type="text" name="username" placeholder="<?php echo $_SESSION["username"];?>"/>
               </div>
               <div class="input-box">
@@ -160,7 +165,7 @@
                 <input type="text" value="<?php echo $_SESSION["user_email"];?>" disabled/>
               </div>
               <div class="input-box">
-                <label>Set Password</label>
+                <label>Change Password</label>
                 <input type="text" name="user_pass" placeholder="<?php echo $_SESSION["user_pass"];?>"/>
               </div>
               <button type="submit">Update Profile</button>
@@ -181,7 +186,7 @@
             </div>
             <hr>
             <div class="contents">
-                <p>&copy; 2024 Developed & Managed by<span>Hemant Zuceed</span></p>
+                <p>&copy; <?php echo date("Y",time());?> Developed & Managed by<span>Hemant Zuceed</span></p>
             </div>
         </div>
     </footer>

@@ -2,59 +2,17 @@
     session_start();
     include("../backend/connection.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Management</title>
+    <title><?php $file_name  = basename($_SERVER["PHP_SELF"]);echo strtoupper(pathinfo($file_name,PATHINFO_FILENAME));?></title>
     <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/responsive.css">
-    <link rel="stylesheet" href="./styles/charts.css">
-    <script type="text/javascript" src="./scripts/googleCharts.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart', 'bar']});
-      google.charts.setOnLoadCallback(drawStuff);
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawStuff() {
-        var chartDiv = document.getElementById('chart_div');
-
-        var data = google.visualization.arrayToDataTable([
-          ['School Finance', 'Total Income', 'Total Expense'],
-          ['July', 400, 300],
-          ['June', 300, 100],
-          ['May', 120, 140],
-          ['April', 400, 320],
-          ['March', 400, 300]
-        ]);
-
-        var options = {
-            colors: ['#4221B0', '#F59120']
-        };
-        var materialChart = new google.charts.Bar(chartDiv);
-        materialChart.draw(data,options);
-    };
-
-    function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Month', 'Sales', 'Expenses'],
-          ['July',  18,      15],
-          ['June',  58,      77],
-          ['May',  65,       70],
-          ['April',  25,      30],
-          ['March',  50,      85]
-        ]);
-
-        var options = {
-          curveType: 'function',
-          legend: { position: 'none' }
-        };
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-        chart.draw(data, options);
-      }
-    </script>
+    <link rel="stylesheet" href="./styles/events.css">
 </head>
 <body>
     <header class="container">
@@ -86,7 +44,14 @@
                 </div>
             </div>
             <div class="person">
-                <img src="./img/admin.png" alt="Administrator">
+                <?php
+                    $image = $_SESSION["user_image"];
+                    if($image == NULL){
+                        echo "<img src='./img/admin.png' style='width:69px;height:69px;border-radius:50%;object-fit:cover;'>";
+                    }else{
+                        echo '<img src="./img/'.$image.'" style="width:69px;height:69px;border-radius:50%;object-fit:cover;">';
+                    }
+                ?>
                 <h3>
                     <?php
                         if(isset($_SESSION["db_username"])){
@@ -108,28 +73,28 @@
     <nav class="sidebar">
         <ul>
             <li class="nav-links">
-                <a href="./index.html">
+                <a href="./dashboard.php">
                     <i class="fa-sharp fa-solid fa-table-cells-large"></i>
                     <span class="nav-items">Dashboard</span>
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
             <li class="nav-links">
-                <a href="./view-teacher.html">
+                <a href="./view-teacher.php">
                     <i class="fa-solid fa-person-chalkboard"></i>
                     <span class="nav-items">Teahcers</span>
                 </a>
                 <span class="tooltip">Teahcers</span>
             </li>
             <li class="nav-links">
-                <a href="./view-student.html">
+                <a href="./view-student.php">
                     <i class="fa-solid fa-user-graduate"></i>
                     <span class="nav-items">Students</span>
                 </a>
                 <span class="tooltip">Students</span>
             </li>
             <li class="nav-links">
-                <a href="./events.html">
+                <a href="./events.php">
                     <i class="fa-regular fa-calendar-check"></i>
                     <span class="nav-items">
                         Events
@@ -138,35 +103,28 @@
                 <span class="tooltip">Events</span>
             </li>
             <li class="nav-links">
-                <a href="./calendar.html">
+                <a href="./calendar.php">
                     <i class="fa-solid fa-calendar-days"></i>
                     <span class="nav-items">Calender</span>
                 </a>
                 <span class="tooltip">Calender</span>
             </li>
             <li class="nav-links">
-                <a href="./chart.html">
+                <a href="./charts.php">
                     <i class="fa-solid fa-chart-simple"></i>
                     <span class="nav-items">Chart</span>
                 </a>
                 <span class="tooltip">Chart</span>
             </li>
             <li class="nav-links">
-                <a href="./finance.html">
+                <a href="./finance.php">
                     <i class="fa-solid fa-chart-line"></i>
                     <span class="nav-items">Finance</span>
                 </a>
                 <span class="tooltip">Finance</span>
             </li>
             <li class="nav-links">
-                <a href="./notification.html">
-                    <i class="fa-solid fa-circle-exclamation"></i>
-                    <span class="nav-items">Notifications</span>
-                </a>
-                <span class="tooltip">Notifications</span>
-            </li>
-            <li class="nav-links">
-                <a href="./setting.html">
+                <a href="./setting.php">
                     <i class="fa-solid fa-gear"></i>
                     <span class="nav-items">Setting</span>
                 </a>
@@ -207,21 +165,33 @@
         </div>
 
         <article class="data-container">
-            <section class="chart-container">
-                <div class="finance attendance">
-                    <div class="heading">School Attendance</div>
-                    <div class="buttons">
-                        <div class="students">
-                            Students
-                            <div class="outer-box"><div class="inner-box"></div></div>
+            <section class="event-container">
+                <div class="calendar">
+                    <header>
+                        <div class="heading">
+                            <h3>School Event Calendar</h3>
+                            <span>You have 89 pending events</span>
                         </div>
-                        <div class="teachers">
-                            Teachers
-                            <div class="outer-box"><div class="inner-box"></div></div>
+                        <div class="buttons">
+                            <i class="fa-solid fa-caret-up" id="prev"></i>
+                            <span class="today-time">June, 2024</span>
+                            <i class="fa-solid fa-caret-down" id="next"></i>
                         </div>
-                    </div>
-                    <div id="bar-graph">
-                        <div id="curve_chart" style="width: 100%!important; height: 100%!important;"></div>
+                    </header>
+                    <div class="custom-calendar">
+                        <section>
+                            <div id="holiday"></div>
+                            <ul class="days">
+                                <li>Sun</li>
+                                <li>Mon</li>
+                                <li>Tue</li>
+                                <li>Wed</li>
+                                <li>Thu</li>
+                                <li>Fri</li>
+                                <li>Sat</li>
+                            </ul>
+                            <ul class="dates"></ul>
+                        </section>
                     </div>
                 </div>
             </section>
@@ -241,12 +211,12 @@
             </div>
             <hr>
             <div class="contents">
-                <p>&copy; 2024 Developed & Managed by<span>Hemant Zuceed</span></p>
+                <p>&copy; <?php echo date("Y",time());?> Developed & Managed by<span>Hemant Zuceed</span></p>
             </div>
         </div>
     </footer>
-
-    <script src="./scripts/charts.js"></script>
+    
+    <script src="./scripts/calendar.js"></script>
     <script src="./scripts/font.js"></script>
 </body>
 </html>

@@ -25,5 +25,5 @@ modebtn.addEventListener('click', () => {
 // =============SUCCESS POPUP=======
 const success_div = document.querySelector('.success');
 setTimeout(() => {
-  success_div.style.display = "none";
+  success_div.style.opacity = "0";
 }, 3000);

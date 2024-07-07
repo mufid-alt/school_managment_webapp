@@ -16,18 +16,11 @@
     $region = htmlspecialchars($_POST["region"]);
     $pincode = $_POST["pincode"];
 
-    // get the subjects array
-    $subject_list = null;
-    if (isset($_POST["subjects"])) {
-      $subjects = $_POST["subjects"];
-
-      // Convert subjects array to a comma-separated string
-      $subject_list = implode(", ", $subjects);
-    }
+    $subjects = json_encode($_POST["subjects"]); // Convert array to JSON
 
     // insert data into database
     $stmt = $conn->prepare("INSERT INTO new_staff (NAME,EMAIL,PASSWORD,PHONE,DOB,GENDER,SENIOR_QUAL,HIGHER_QUAL,SUBJECTS,ADRESS_1,ADRESS_2,COUNTRY,CITY,REGION,PINCODE) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("sssssssssssssss",$name,$email,$pass,$phone,$dob,$gender,$qual_1,$qual_2,$subject_list,$add_1,$add_2,$country,$city,$region,$pincode);
+    $stmt->bind_param("sssssssssssssss",$name,$email,$pass,$phone,$dob,$gender,$qual_1,$qual_2,$subjects,$add_1,$add_2,$country,$city,$region,$pincode);
     $stmt->execute();
 
     // Check if the query was successful

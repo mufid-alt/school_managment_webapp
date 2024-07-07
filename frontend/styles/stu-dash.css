@@ -1,61 +1,164 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    width: 100%;
+    font-family: sans-serif;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+    background-color: var(--background-color);
 }
 
-.dashboard {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 20px;
-    padding: 20px;
+/* ======COLOR VARIABLES========= */
+:root{
+    --main-color: #4221B0;
+    --white-color: #FFFFFF;
+    --border-color: #b0b5bc;
+    --black-color: #000000;
+    --orange-color: #F59120;
+    --background-color: #F1EDFB;
+    --footer-color: #192733;
+    --footer-text-color: #B6C7D6;
+}
+header {
+    background-color: var(--white-color);
+    color: var(--black-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.55rem 4rem;
 }
 
-.profile-section {
-    grid-column: 1 / 2;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
+.log-out{
+    display: flex;
+    align-items: center;
 }
-
-.profile-pic {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.academic-overview, .assignments-deadlines, .grades, .study-materials, .notifications {
-    grid-column: 2 / 3;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-h1, h2, h3 {
-    color: #333;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    background-color: #f9f9f9;
-    padding: 10px;
+.log-out button {
+    background-color: var(--main-color);
+    color: var(--white-color);
+    font-size: 1.2rem;
+    padding: 0.75rem 2rem;
+    border: none;
+    outline: none;
     border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-right: 1rem;
+}
+
+.log-out button:hover{
+    background-color: rgba(0, 0, 0, 1);
+}
+section.personal{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.1rem;
+}
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+section {
+    flex: 1 0 30%;
+    margin: 10px 5rem;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+article{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.column{
+    width: 22%;
+    border: 1px solid var(--border-color);
+    display: inline-flex;
+    height: 200px;
+    border-radius: 5px;
+    padding: 1rem 4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.column h3{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.column ul li{
+    margin-top: 0.45rem;
+    font-size: 1rem;
+    letter-spacing: 5px;
+}
+
+.column-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+h2 {
     margin-bottom: 10px;
 }
 
-a {
-    color: #007BFF;
-    text-decoration: none;
+.announcements ul {
+    list-style: none;
+    padding: 0;
+    max-height: 100px;
+    overflow-y: auto;
 }
 
-a:hover {
-    text-decoration: underline;
+.announcements button {
+    background-color: #ddd;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.schedule table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.schedule th, .schedule td {
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+.progress {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #4CAF50;  /* Green for progress */
+    transition: width 1s ease;
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    width: 100%;
+    height: 10%;
+    background-color: var(--footer-color);
+    color: var(--footer-text-color);
+    position: absolute;
+    top: calc(130vh + 10%);
+}
+.footer span{
+    color: var(--orange-color);
+    cursor: pointer;
 }

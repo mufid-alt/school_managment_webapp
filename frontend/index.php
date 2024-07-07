@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="login__forms">
-                    <form action="#" class="login__registre" id="login-in">
+                    <form action="./index.php" method="post" class="login__registre" id="login-in">
                         <h1 class="login__title">User Sign In</h1>
     
                         <div class="login__box">

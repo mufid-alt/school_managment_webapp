@@ -16,7 +16,11 @@
     <link rel="stylesheet" href="./styles/events.css">
 </head>
 <body>
+    <!-- ======Success message pop up==== -->
+    <div class="success"></div>
+
     <?php include("../backend/setting-backend.php");?>
+
     <header class="container">
         <div class="logo">
             <div class="menu">
@@ -49,9 +53,9 @@
                 <?php
                     $image = $_SESSION["user_image"];
                     if($image == NULL){
-                        echo "<img src='./img/admin.png' style='width:75px;height:75px;border-radius:50%;object-fit:cover;'>";
+                        echo "<img src='./img/admin.png' style='width:69px;height:69px;border-radius:50%;object-fit:cover;'>";
                     }else{
-                        echo '<img src="./img/'.$image.'" style="width:75px;height:75px;border-radius:50%;object-fit:cover;">';
+                        echo '<img src="./img/'.$image.'" style="width:69px;height:69px;border-radius:50%;object-fit:cover;">';
                     }
                 ?>
                 <h3>
@@ -75,28 +79,28 @@
     <nav class="sidebar">
         <ul>
             <li class="nav-links">
-                <a href="./index.html">
+                <a href="./dashboard.php">
                     <i class="fa-sharp fa-solid fa-table-cells-large"></i>
                     <span class="nav-items">Dashboard</span>
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
             <li class="nav-links">
-                <a href="./view-teacher.html">
+                <a href="./view-teacher.php">
                     <i class="fa-solid fa-person-chalkboard"></i>
                     <span class="nav-items">Teahcers</span>
                 </a>
                 <span class="tooltip">Teahcers</span>
             </li>
             <li class="nav-links">
-                <a href="./view-student.html">
+                <a href="./view-student.php">
                     <i class="fa-solid fa-user-graduate"></i>
                     <span class="nav-items">Students</span>
                 </a>
                 <span class="tooltip">Students</span>
             </li>
             <li class="nav-links">
-                <a href="./events.html">
+                <a href="./events.php">
                     <i class="fa-regular fa-calendar-check"></i>
                     <span class="nav-items">
                         Events
@@ -105,28 +109,28 @@
                 <span class="tooltip">Events</span>
             </li>
             <li class="nav-links">
-                <a href="./calendar.html">
+                <a href="./calendar.php">
                     <i class="fa-solid fa-calendar-days"></i>
                     <span class="nav-items">Calender</span>
                 </a>
                 <span class="tooltip">Calender</span>
             </li>
             <li class="nav-links">
-                <a href="./chart.html">
+                <a href="./charts.php">
                     <i class="fa-solid fa-chart-simple"></i>
                     <span class="nav-items">Chart</span>
                 </a>
                 <span class="tooltip">Chart</span>
             </li>
             <li class="nav-links">
-                <a href="./finance.html">
+                <a href="./finance.php">
                     <i class="fa-solid fa-chart-line"></i>
                     <span class="nav-items">Finance</span>
                 </a>
                 <span class="tooltip">Finance</span>
             </li>
             <li class="nav-links">
-                <a href="./setting.html">
+                <a href="./setting.php">
                     <i class="fa-solid fa-gear"></i>
                     <span class="nav-items">Setting</span>
                 </a>
@@ -184,7 +188,7 @@
             </div>
             <hr>
             <div class="contents">
-                <p>&copy; 2024 Developed & Managed by<span>Hemant Zuceed</span></p>
+                <p>&copy; <?php echo date("Y",time());?> Developed & Managed by<span>Hemant Zuceed</span></p>
             </div>
         </div>
     </footer>
@@ -193,3 +197,14 @@
     <script src="./scripts/font.js"></script>
 </body>
 </html>
+
+<?php
+if (isset($_SESSION['success'])) {
+    $success = $_SESSION['success'];
+    echo "<script>
+    document.querySelector('.success').style.opacity = '1';
+    document.querySelector('.success').innerText = '$success';
+    </script>";
+    unset($_SESSION['success']);
+}
+?>

@@ -166,8 +166,8 @@ header.container .logo .menu i{
 }
 
 .admin .person img{
-    width: 75px;
-    height: 75px;
+    width: 69px;
+    height: 69px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 1.2rem;
@@ -178,7 +178,7 @@ header.container .logo .menu i{
     width: 320px;
     height: 4.5rem;
     background-color: var(--light-blue);
-    border-radius: 40px 8px 8px 40px;
+    border-radius: 42px 8px 8px 42px;
     cursor: pointer;
     position: relative;
     border: 2px solid var(--border-color);

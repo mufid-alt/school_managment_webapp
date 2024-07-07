@@ -42,10 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (isset($img_result) || isset($result)) {
-        $success = "Changes Saved";
+        $_SESSION['success'] = "Changes Saved";
         echo "<script>location.href = './setting.php';</script>";
     } else {
-        $success = "Something went wrong...";
+        $_SESSION['success'] = "Something went wrong...";
     }
 }
 
