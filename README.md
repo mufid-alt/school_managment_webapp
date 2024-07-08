@@ -1,4 +1,4 @@
-The Project is coded and programmed by @dev-hemant-zuceed.
+<h1>The Project is coded and programmed by @dev-hemant-zuceed.</h1>
 To the users who is using it first time on their system.
 Please run the config.php file first after running Xampp and Mysql Servers
 ANd if the config file says everything is done
