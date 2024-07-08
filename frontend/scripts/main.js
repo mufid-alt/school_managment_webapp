@@ -161,10 +161,10 @@ function applyOnSmallScreens() {
   
   function handleViewportChange(e) {
     if (e.matches) {
-      sidebar.classList.add("active");
+      sidebar.classList.remove("active");
       menu.style.pointerEvents = "all";
     } else {
-      sidebar.classList.remove('active');
+      sidebar.classList.add('active');
       menu.style.pointerEvents = "none";
     }
   }

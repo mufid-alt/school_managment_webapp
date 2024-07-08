@@ -153,6 +153,9 @@
     .footer-icons{
         width: 40%;
     }
+    .footer{
+        top: calc(150px + 290vh);
+    }
 }
 
 /* M DEVICES */
