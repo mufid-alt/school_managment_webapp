@@ -864,7 +864,7 @@ body.dark-theme .custom-calendar #holiday{
 }
 
 .dates li:nth-child(22)::before,
-.dates li:nth-child(9)::before,
+.dates li:nth-child(2)::before,
 .dates li:nth-child(19)::before,
 .dates li:nth-child(21)::before,
 .dates li:nth-child(25)::before,
