@@ -10,21 +10,21 @@
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
+    }else{
+        echo "<h1>Connected to the server</h1>";
     }
 
-    // Check if database exists, if not create it
-    $db_selected = mysqli_select_db($conn, $dbname);
-    if (!$db_selected) {
-        $sql = "CREATE DATABASE school_db";
-        if ($conn->query($sql) === TRUE) {
-            echo "<h1>Database created successfully</h1>";
-        } else {
-            echo "Error creating database: " . $conn->error;
-        }
+    // create database
+    $sql = "CREATE DATABASE school_db";
+    if ($conn->query($sql) === TRUE) {
+        $db_name = "school_db";
+        echo "<h1>Database created successfully</h1>";
+    } else {
+        echo "Error creating database: " . $conn->error;
     }
 
     // Connect to the database
-    $conn->select_db($dbname);
+    $conn->select_db($db_name);
 
     // create table new_admission
     $create_table_admission = "
