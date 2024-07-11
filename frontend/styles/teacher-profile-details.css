@@ -1,27 +1,16 @@
-form .nav-buttons{
-    height: 50px;
-    width: 100%;
-    margin-bottom: 1.5rem;
+.det-btn button{
+    background-color: red;
+    transition: all 0.2s ease-in;
 }
 
-.nav-buttons button{
-    color: white;
-    width: 100%;
-    background-color: rgba(255, 0, 0, 1);
-    padding: 0.75rem 2rem;
-    border-radius: 4px;
-    font-weight: 600;
-    transition: 0.2s ease-in-out;
-}
-
-.nav-buttons button:hover{
-    background-color: rgba(0, 0, 0, 1);
+.det-btn button:hover{
+    background: rgba(0, 0, 0, 1);
 }
 
 .main{
-    height: 180vh;
+    height: 190vh;
 }
 
 .footer{
-    top: calc(150px + 180vh);
+    top: calc(150px + 190vh);
 }

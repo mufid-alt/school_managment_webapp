@@ -34,7 +34,7 @@
             <div class="menu">
                 <i class="fa-solid fa-bars"></i>
             </div>
-            <a href="#">
+            <a href="./dashboard.php">
                 <img src="./img/logo.png" alt="Logo">
             </a>
         </div>

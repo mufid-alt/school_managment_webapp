@@ -28,7 +28,7 @@
             <div class="menu">
                 <i class="fa-solid fa-bars"></i>
             </div>
-            <a href="#">
+            <a href="./dashboard.php">
                 <img src="./img/logo.png" alt="Logo">
             </a>
         </div>
@@ -154,7 +154,7 @@
 
         <section class="form-container">
             <header>Student Personal Details</header>
-            <form action="#" class="form">
+            <form action="../backend/delete-student-profile.php" method="post" class="form" onsubmit="return confirmDeletion();">
               <div class="input-box">
                 <label>Full Name</label>
                 <input type="text" value="<?php echo $_SESSION["username"];?>" disabled/>
@@ -252,6 +252,9 @@
                   <input type="text" value="<?php echo $_SESSION["region"];?>" disabled/>
                   <input type="number" value="<?php echo $_SESSION["pincode"];?>" disabled/>
                 </div>
+              </div>
+              <div class="input-box">
+                <button type="submit" style="background-color: red;">Delete Profile</button>
               </div>
             </form>
         </section>

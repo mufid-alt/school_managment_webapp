@@ -5,7 +5,7 @@
     //checks if teacher logged in else redirects to login page
     if (!isset($_SESSION['teacher_logged_in'])) {
         // Redirect the user to the login page
-        header('Location: ./index.php');
+        header('Location: ./teacher-dashboard.php');
         exit();
     }
 ?>

@@ -27,3 +27,8 @@ const success_div = document.querySelector('.success');
 setTimeout(() => {
   success_div.style.display = "none";
 }, 3000);
+
+// confirm deletion before deleting user
+function confirmDeletion() {
+    return confirm("Are you sure you want to delete this user?");
+}

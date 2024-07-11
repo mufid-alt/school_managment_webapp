@@ -1,5 +1,6 @@
 <?php
     $user_id = $_GET["user_id"];
+    $_SESSION["teacher_id"] = $_GET["user_id"];
 
     // Prepare statement to prevent SQL injection
     $stmt = $conn->prepare("SELECT * FROM new_staff WHERE ID = ?");

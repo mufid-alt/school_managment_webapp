@@ -23,15 +23,12 @@
   <link rel="stylesheet" href="./styles/teacher-profile-details.css">
 </head>
 <body>
-  <!-- ======Success message pop up==== -->
-  <div class="success"></div>
-
   <header class="container">
         <div class="logo">
             <div class="menu">
                 <i class="fa-solid fa-bars"></i>
             </div>
-            <a href="#">
+            <a href="./dashboard.php">
                 <img src="./img/logo.png" alt="Logo">
             </a>
         </div>
@@ -157,7 +154,7 @@
 
         <section class="form-container">
             <header>Teacher Personal Details</header>
-            <form action="#" class="form">
+            <form action="../backend/delete-teacher-profile.php" method="post" class="form" onsubmit="return confirmDeletion();">
               <div class="input-box">
                 <label>Full Name</label>
                 <input type="text" value="<?php echo $_SESSION["username"];?>" disabled/>
@@ -258,6 +255,9 @@
                   <input type="text" value="<?php echo $_SESSION["region"];?>" disabled/>
                   <input type="number" value="<?php echo $_SESSION["pincode"];?>" disabled/>
                 </div>
+              </div>
+              <div class="input-box det-btn">
+                <button type="submit">Delete Profile</button>
               </div>
             </form>
         </section>
